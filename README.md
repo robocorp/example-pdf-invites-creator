@@ -7,13 +7,13 @@ Starting from an Excel file, this robot will generate a personalized PDF invitat
 This robot demonstrates the advanced features of the Robocorp set of tools:
 
 - Support for multiple tasks inside the same robot
-- Using the `Robocloud.Items` library to pass data between two different tasks in Robocorp Cloud.
+- Using the `Robocloud.Items` library to pass data between two different tasks in Control Room.
 
 Running this robot locally needs some setup steps:
 
 ### Setting up the Robocloud.Items library for local use
 
-When executing our robot in a cloud environment like [Robocorp Cloud](https://cloud.robocorp.com), the `RPA.Robocloud.Items` library will store the work item in the cloud environment, sharing its contents between steps defined in the same process, without any configuration needed.
+When executing our robot in a cloud environment like [Control Room](https://cloud.robocorp.com), the `RPA.Robocloud.Items` library will store the work item in the cloud environment, sharing its contents between steps defined in the same process, without any configuration needed.
 
 When developing our robot and running it locally, however, we want the library to store the data in a JSON file, and provide the required parameters to simulate the cloud environment. You can learn more about the internals of the `RPA.Robocloud.Items` library [here](https://robocorp.com/docs/product-manuals/robocorp-cloud/using-robocloud-items-library).
 
@@ -59,4 +59,4 @@ For this example, the [`robot.yaml`](./robot.yaml) file has been configured to i
 
 In **Robocorp Lab**, you will be able to choose which of the two tasks to run when clicking on the `Run Robot` button.
 
-In **Robocorp Cloud**, you can select which of the two tasks you want to add to a process as a step.
+In **Control Room**, you can select which of the two tasks you want to add to a process as a step.
