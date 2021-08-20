@@ -15,7 +15,7 @@ Running this robot locally needs some setup steps:
 
 When executing our robot in a cloud environment like [Control Room](https://cloud.robocorp.com), the `RPA.Robocloud.Items` library will store the work item in the cloud environment, sharing its contents between steps defined in the same process, without any configuration needed.
 
-When developing our robot and running it locally, however, we want the library to store the data in a JSON file, and provide the required parameters to simulate the cloud environment. You can learn more about the internals of the `RPA.Robocloud.Items` library [here](https://robocorp.com/docs/product-manuals/robocorp-cloud/using-robocloud-items-library).
+When developing our robot and running it locally, however, we want the library to store the data in a JSON file, and provide the required parameters to simulate the cloud environment. You can learn more about the internals of the `RPA.Robocloud.Items` library [here](https://robocorp.com/docs/development-guide/control-room/data-pipeline).
 
 Create a new file called `items.json` on your file system, for example, at `/Users/<username>/items.json`.
 
