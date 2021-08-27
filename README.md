@@ -7,25 +7,17 @@ Starting from an Excel file, this robot will generate a personalized PDF invitat
 This robot demonstrates the advanced features of the Robocorp set of tools:
 
 - Support for multiple tasks inside the same robot
-- Using the `Robocloud.Items` library to pass data between two different tasks in Control Room.
+- Using the `Robocorp.WorkItems` library to pass data between two different tasks in Control Room.
 
 Running this robot locally needs some setup steps:
 
-### Setting up the Robocloud.Items library for local use
+### Setting up the Robocorp.WorkItems library for local use
 
-When executing our robot in a cloud environment like [Control Room](https://cloud.robocorp.com), the `RPA.Robocloud.Items` library will store the work item in the cloud environment, sharing its contents between steps defined in the same process, without any configuration needed.
+When executing our robot in a cloud environment like [Control Room](https://cloud.robocorp.com), the `RPA.Robocorp.WorkItems` library will store the work item in the cloud environment, sharing its contents between steps defined in the same process, without any configuration needed.
 
-When developing our robot and running it locally, however, we want the library to store the data in a JSON file, and provide the required parameters to simulate the cloud environment. You can learn more about the internals of the `RPA.Robocloud.Items` library [here](https://robocorp.com/docs/development-guide/control-room/data-pipeline).
+When developing our robot and running it locally, however, we want the library to store the data in a JSON file, and provide the required parameters to simulate the cloud environment. You can learn more about the internals of the `RPA.Robocorp.WorkItems` library [here](https://robocorp.com/docs/development-guide/control-room/data-pipeline).
 
-Create a new file called `items.json` on your file system, for example, at `/Users/<username>/items.json`.
-
-Paste this content into your `items.json` file, creating an empty but valid JSON file:
-
-```json
-{}
-```
-
-Edit the `RPA_WORKITEMS_PATH` variable in the `devdata/env.json` file to point to the `items.json` file on your filesystem. On macOS / Linux, use normal file paths, for example, `/Users/<username>/items.json`. On Windows 10, you need to escape the path, for example, `C:\\Users\\User\\items.json`.
+To understand how local work items are configured, see the environment variables defined in `devdata/env.json`.
 
 ## First task: Excel to Work Item
 
@@ -33,7 +25,7 @@ This robot will:
 
 - download and collect the data from an Excel file
 - process the data into the correct format
-- add the data to the work item and exit
+- add the data to a work item and exit
 
 Get to the code:
 
@@ -43,7 +35,7 @@ Get to the code:
 
 This robot will:
 
-- retrieve the data from the work item
+- retrieve the data from a work item
 - loop through the data and generate a personalized PDF for each event participant using a template into a temporary folder
 - collect all generated files into a zip archive in the output folder
 - write log files

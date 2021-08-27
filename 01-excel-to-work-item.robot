@@ -10,7 +10,7 @@
 Documentation     Excel reader robot. Reads information from a given Excel file
 ...               and adds it to the work item.
 Library           RPA.Excel.Files
-Library           RPA.Robocloud.Items
+Library           RPA.Robocorp.WorkItems
 
 *** Variables ***
 ${EXCEL_FILE_PATH}=    ${CURDIR}${/}devdata${/}Data.xlsx
