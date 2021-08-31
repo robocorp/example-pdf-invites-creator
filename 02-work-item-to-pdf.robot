@@ -12,7 +12,7 @@ Documentation     Invite creator robot. Creates PDF invitations to events based
 Library           RPA.FileSystem
 Library           RPA.Archive
 Library           RPA.PDF
-Library           RPA.Robocloud.Items
+Library           RPA.Robocorp.WorkItems
 
 *** Variables ***
 ${PDF_TEMP_OUTPUT_DIRECTORY}=    ${CURDIR}${/}temp
