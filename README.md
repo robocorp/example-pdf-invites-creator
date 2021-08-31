@@ -2,7 +2,7 @@
 
 Starting from an Excel file, this robot will generate a personalized PDF invitation for each participant to an event.
 
-> You can find the full tutorial and instructions on [Robocorp's documentation site](https://robocorp.com/docs/development-howtos/pdf/pdf-invites-printer).
+> You can find the full tutorial and instructions on [Robocorp's documentation site](https://robocorp.com/docs/development-guide/pdf/pdf-invites-printer).
 
 This robot demonstrates the advanced features of the Robocorp set of tools:
 
