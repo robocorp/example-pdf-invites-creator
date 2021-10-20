@@ -1,28 +1,6 @@
 tasks:
-  1-From Excel to Work Item:
-    command:
-      - python
-      - -m
-      - robot
-      - --report
-      - NONE
-      - -d
-      - output
-      - --logtitle
-      - Task log
-      - 01-excel-to-work-item.robot
-  2-From Work Item to PDF:
-    command:
-      - python
-      - -m
-      - robot
-      - --report
-      - NONE
-      - -d
-      - output
-      - --logtitle
-      - Task log
-      - 02-work-item-to-pdf.robot
+  Create PDF invitations:
+    robotTaskName: Create PDF invitations
 
 condaConfigFile: conda.yaml
 artifactsDir: output

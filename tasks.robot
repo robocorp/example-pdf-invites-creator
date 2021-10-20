@@ -1,0 +1,54 @@
+*** Settings ***
+Documentation     Creates PDF invitations based on Excel data.
+Library           RPA.Archive
+Library           RPA.Excel.Files
+Library           RPA.FileSystem
+Library           RPA.PDF
+
+*** Variables ***
+${EXCEL_FILE_PATH}=    ${CURDIR}${/}devdata${/}Data.xlsx
+${PDF_TEMP_OUTPUT_DIRECTORY}=    ${CURDIR}${/}temp
+${PDF_TEMPLATE_PATH}=    ${CURDIR}${/}devdata${/}invite.template
+
+*** Keywords ***
+Set up directories
+    Create Directory    ${PDF_TEMP_OUTPUT_DIRECTORY}
+    Create Directory    ${OUTPUT_DIR}
+
+*** Keywords ***
+Collect invitations from the Excel file
+    Open Workbook    ${EXCEL_FILE_PATH}
+    ${invitations}=    Read Worksheet    header=True
+    Close Workbook
+    [Return]    ${invitations}
+
+*** Keywords ***
+Create PDF file for invitation
+    [Arguments]    ${invitation}
+    Template Html To Pdf
+    ...    ${PDF_TEMPLATE_PATH}
+    ...    ${PDF_TEMP_OUTPUT_DIRECTORY}/${invitation["first_name"]}_${invitation["last_name"]}.pdf
+    ...    ${invitation}
+
+*** Keywords ***
+Create ZIP package from PDF files
+    ${zip_file_name}=    Set Variable    ${OUTPUT_DIR}/PDFs.zip
+    Archive Folder With Zip
+    ...    ${PDF_TEMP_OUTPUT_DIRECTORY}
+    ...    ${zip_file_name}
+
+*** Keywords ***
+Cleanup temporary PDF directory
+    Remove Directory    ${PDF_TEMP_OUTPUT_DIRECTORY}    True
+
+*** Tasks ***
+Create PDF invitations
+    Set up directories
+    ${invitations}=    Collect invitations from the Excel file
+    FOR    ${invitation}    IN    @{invitations}
+        Run Keyword And Continue On Failure
+        ...    Create PDF file for invitation
+        ...    ${invitation}
+    END
+    Create ZIP package from PDF files
+    [Teardown]    Cleanup temporary PDF directory
