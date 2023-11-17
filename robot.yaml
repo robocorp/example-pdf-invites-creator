@@ -1,6 +1,8 @@
 tasks:
-  Create PDF invitations:
+  Robot Framework - Create PDF invitations:
     robotTaskName: Create PDF invitations
+  Python - Create PDF invitations:
+    shell: python -m robocorp.tasks run tasks.py
 
 condaConfigFile: conda.yaml
 artifactsDir: output

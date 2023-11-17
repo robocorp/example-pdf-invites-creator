@@ -22,7 +22,8 @@ Create PDF invitations
         ...    Create PDF file for invitation
         ...    ${invitation}
     END
-    Create ZIP package from PDF files
+    ${zip_file_path}=    Create ZIP package from PDF files
+    Log    Archive with the PDF invitations: ${zip_file_path}    level=WARN
     [Teardown]    Cleanup temporary PDF directory
 
 
@@ -41,14 +42,15 @@ Create PDF file for invitation
     [Arguments]    ${invitation}
     Template Html To Pdf
     ...    ${PDF_TEMPLATE_PATH}
-    ...    ${PDF_TEMP_OUTPUT_DIRECTORY}/${invitation["first_name"]}_${invitation["last_name"]}.pdf
+    ...    ${PDF_TEMP_OUTPUT_DIRECTORY}${/}${invitation["first_name"]}_${invitation["last_name"]}.pdf
     ...    ${invitation}
 
 Create ZIP package from PDF files
-    ${zip_file_name}=    Set Variable    ${OUTPUT_DIR}/PDFs.zip
+    ${zip_file_path}=    Set Variable    ${OUTPUT_DIR}${/}PDFs.zip
     Archive Folder With Zip
     ...    ${PDF_TEMP_OUTPUT_DIRECTORY}
-    ...    ${zip_file_name}
+    ...    ${zip_file_path}
+    RETURN    ${zip_file_path}
 
 Cleanup temporary PDF directory
     Remove Directory    ${PDF_TEMP_OUTPUT_DIRECTORY}    True
